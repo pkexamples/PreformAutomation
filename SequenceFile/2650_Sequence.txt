@@ -1,0 +1,52 @@
+PK2650SetPreformId 'Test' 20
+PK2650SetTemplate 'LM3317.pftm'
+PK2650MoveZManual 'Load preform and position at tank opening'
+PK2650LocateTip
+PK2650MoveToZ 60
+PK2650EquilibratePreform
+PK2650MoveToZ 60
+PK2650NewSlice
+PK2650HomeMotors
+PK2650ComputeOilIndex
+PK2650RotateToW 0
+PK2650LocatePreform
+PK2650AutoFocus
+PK2650Measure
+PK2650HomeMotors
+PK2650ComputeOilIndex
+PK2650RotateToW 120
+PK2650LocatePreform
+PK2650AutoFocus
+PK2650Measure
+PK2650HomeMotors
+PK2650ComputeOilIndex
+PK2650RotateToW 240
+PK2650LocatePreform
+PK2650AutoFocus
+PK2650Measure
+PK2650ComputeSlice
+ProcessResults
+PK2650MoveToZ 50
+PK2650NewSlice
+PK2650HomeMotors
+PK2650ComputeOilIndex
+PK2650RotateToW 0
+PK2650LocatePreform
+PK2650AutoFocus
+PK2650Measure
+PK2650HomeMotors
+PK2650ComputeOilIndex
+PK2650RotateToW 120
+PK2650LocatePreform
+PK2650AutoFocus
+PK2650Measure
+PK2650HomeMotors
+PK2650ComputeOilIndex
+PK2650RotateToW 240
+PK2650LocatePreform
+PK2650AutoFocus
+PK2650Measure
+PK2650ComputeSlice
+ProcessResults
+PK2650MoveToZ -100
+Pause
