@@ -41,7 +41,9 @@ for z in z_positions:
 
 A results processor often is employed to persist in-memory measurement results to a text file so that an external program (such as a remote control program) can read it. Results processors could also perform other operations on the measurement result data, such as running custom algorithms on raw data, comparing results to product specifications, and/or creating reports.
 
-The `PKSummaryFile.py` file that is installed into the "Utilities" sub-directory of the PKSL "Scripts" directory with the PKSL software is an example of a script-based results processor, but others can be added that follow the same pattern. All results processors must have comments at the top to give them a "Service Name" and a "Friendly Name" and be located in the `Utilities` subdirectory of the PKSL `Scripts` directory. Results processors can also be written in a .NET Framework language using the Managed Extensibility Framework (MEF). See the PKSL User's Guide for more details on MEF results processors.
+The `PKSummaryFile.py` file that is installed into the "Utilities" sub-directory of the PKSL "Scripts" directory with the PKSL software is an example of a script-based results processor, but others can be added that follow the same pattern. All results processors must have comments at the top to give them a "Service Name" and a "Friendly Name" and be located in the `Utilities` subdirectory of the PKSL `Scripts` directory. Note that script-based results processors are compiled when the PKSL Main Application starts, so if changes are made to the script files while PKSL Main Application is running, it will need to be restarted for the change to take effect the next time the results-processor runs.
+
+Results processors can also be written in a .NET Framework language using the Managed Extensibility Framework (MEF). See the PKSL User's Guide for more details on MEF results processors.
 
 ## Automating with IronPython scripts
 
