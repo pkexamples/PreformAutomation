@@ -2,9 +2,9 @@
 
 Due to the complexity and long duration of preform measurements, it is typically desirable to automate measurements to allow for dynamic control over measurements based upon real-time intermediate measurement results, rather than to rely on fully pre-programmed measurement sequences that statically define all measurement locations and parameters. In a typical production environment, an external program controls the measurement workflow, processes results, and may interact with factory data services. A PKSL Remote remote control client program can be written in any .NET Framework language or any language that supports COM (Component Object Model).
 
-This guide consists of this README summary along with several example scripts that utilize the `PKSLRemote` script package (see the `Scripts` directory), several example script-based results processors (see the `Utilities` directory), and an example measurement sequence file for the example Sequence File remote client application (in `SequenceFile`).
+This guide consists of this README summary along with several example scripts that utilize the `PKSLRemote` script package (see the `Scripts` directory), several example script-based results processors (see the `Utilities` directory), and an example measurement sequence file for the example Sequence File remote client application (in `SequenceFile`). See the PKSL Remote documentation that installs with PKSL Remote for details on the example remote client programs.
 
-Please contact [PKSL Support](mailto:support@pkinetics.com) to acquire the latest PKSL and PKSL Remote software installers. PKSL Remote can be installed on any Windows 7 or later computer, and its install program places a desktop shortcut to the locally installed documentation.
+Contact [PK Support](mailto:support@pkinetics.com) to acquire the latest PKSL and PKSL Remote software installers. PKSL Remote can be installed on any Windows 7 or later computer.
 
 ## PKSL Remote
 
@@ -12,7 +12,7 @@ The PKSL Remote interface consists of a RemoteHost.py script and a package of sc
 
 ## Measurement result processing
 
-The `MarkSlice` command in both the `PK2650` and `PK2660` modules allows you to specify a results processor (explained below) to execute after all the angular position scans have been completed for a specific z-postion. The `MarkSlice` command should be issued after issuing the `NewSlice` command. After issuing the sequence of commands needed to execute the scan(s) and compute the slice result, the `ProcessResults` command causes the specified results processor(s) to execute. See the illustrative snippet below:
+The `MarkSlice` command in both the `PK2650` and `PK2660` modules allows you to specify a results processor (explained below) to execute after all the angular position scans have been completed for a specific z-postion. The `MarkSlice` command should be issued after issuing the `NewSlice` command. After issuing the sequence of commands needed to execute the scan(s) and compute the slice result, the `ProcessResults` command causes the specified results processor(s) to execute. See the snippet below showing the `NewSlice` and `MarkSlice` commands used in the context of a measurement sequence:
 
 ```py
 for z in z_positions:
@@ -42,6 +42,8 @@ for z in z_positions:
 A results processor often is employed to persist in-memory measurement results to a text file so that an external program (such as a remote control program) can read it. Results processors could also perform other operations on the measurement result data, such as running custom algorithms on raw data, comparing results to product specifications, and/or creating reports.
 
 The `PKSummaryFile.py` file that is installed into the "Utilities" sub-directory of the PKSL "Scripts" directory with the PKSL software is an example of a script-based results processor, but others can be added that follow the same pattern. All results processors must have comments at the top to give them a "Service Name" and a "Friendly Name" and be located in the `Utilities` subdirectory of the PKSL `Scripts` directory. Note that script-based results processors are compiled when the PKSL Main Application starts, so if changes are made to the script files while PKSL Main Application is running, it will need to be restarted for the change to take effect the next time the results-processor runs.
+
+See the `Utilities` directory for several example preform results processor scripts. The `Index Profile ASCII Files` directory contains some example output that can be generated using these results processors with the `MarkSlice` function as described above.
 
 Results processors can also be written in a .NET Framework language using the Managed Extensibility Framework (MEF). See the PKSL User's Guide for more details on MEF results processors.
 
